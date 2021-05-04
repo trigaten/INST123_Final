@@ -48,3 +48,21 @@ FROM raw_books;
 INSERT INTO ratings (isbn, avg_rating, ratings_count, text_reviews)
 SELECT isbn, avg_rating, ratings_count, text_reviews
 FROM raw_books;
+
+CREATE TABLE lifetime_sales (
+	isbn varchar,
+	revenue float,
+	copies_sold integer,
+	PRIMARY KEY(isbn),
+   	CONSTRAINT for_key
+      FOREIGN KEY(isbn) 
+	  REFERENCES books(isbn)
+);
+
+INSERT INTO lifetime_sales (isbn, revenue)
+SELECT isbn, (SELECT random_between(1,100))
+FROM books;
+
+update lifetime_sales
+    set revenue = POWER(10, floor(random() * 4 + 3))*random(),
+	copies_sold = POWER(10, floor(random() * 4 + 3))*random();
