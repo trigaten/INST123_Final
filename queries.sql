@@ -24,17 +24,13 @@ WHERE author like '%J.K. Rowling%'
 
 -- Which books have more than average lifetime revenue?
 SELECT books.title, lifetime_sales.revenue
-FROM
-	books
+FROM books
 JOIN lifetime_sales 
 ON lifetime_sales.isbn = books.isbn
-WHERE
-	lifetime_sales.revenue > (
-		SELECT
-			AVG (revenue)
-		FROM
-			lifetime_sales
-	);
+WHERE lifetime_sales.revenue > (
+		SELECT AVG (revenue)
+		FROM lifetime_sales
+		);
 
 
 -- What is the best reviewed book on record? We can see that there are multiple.
