@@ -37,8 +37,8 @@ CREATE TABLE ratings (
 	text_reviews numeric,
 	PRIMARY KEY(isbn),
    	CONSTRAINT for_key
-      FOREIGN KEY(isbn) 
-	  REFERENCES books(isbn)
+      	FOREIGN KEY(isbn) 
+	REFERENCES books(isbn)
 );
 
 INSERT INTO books (isbn, title, author, lang, pages, publication_date, publisher)
@@ -55,8 +55,8 @@ CREATE TABLE lifetime_sales (
 	copies_sold integer,
 	PRIMARY KEY(isbn),
    	CONSTRAINT for_key
-      FOREIGN KEY(isbn) 
-	  REFERENCES books(isbn)
+     	FOREIGN KEY(isbn) 
+	REFERENCES books(isbn)
 );
 
 INSERT INTO lifetime_sales (isbn, revenue)
